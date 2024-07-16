@@ -3,11 +3,13 @@ from django.contrib.auth.models import User
 # Create your models here.
 from django.db import models
 
-from brand.models import Brand
+from brand.models import BrandModel
 
 
 class CarModel(models.Model):
-    brand = models.ForeignKey(Brand, on_delete=models.CASCADE, related_name="carbrand")
+    brand = models.ForeignKey(
+        BrandModel, on_delete=models.CASCADE, related_name="carbrand"
+    )
     title = models.CharField(max_length=200)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)

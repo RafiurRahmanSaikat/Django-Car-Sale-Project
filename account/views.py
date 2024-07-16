@@ -41,6 +41,7 @@ class UserLogout(RedirectView):
 
     def get(self, request, *args, **kwargs):
         logout(request)
+        messages.success(self.request, "Login successful")
         return super().get(request, *args, **kwargs)
 
 
@@ -80,7 +81,7 @@ def change_password(request):
             messages.success(request, "Password Changed Successfully")
             return redirect("profile")
     else:
-        messages.error(request, "Password Change Failed")
+        # messages.error(request, "Password Change Failed")
         form = PasswordChangeForm(user=request.user)
     return render(request, "change_password.html", {"form": form})
 
