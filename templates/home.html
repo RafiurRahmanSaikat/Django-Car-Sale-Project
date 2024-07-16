@@ -1,8 +1,21 @@
 {% extends 'base.html' %}
 {{ block.super }}
+{% load static %}
 
 {% block content %}
-  <h1>I am Home(ROOOT)</h1>
+  <section class="hero-section mx-4 bg-dark text-white rounded-pill p-5 mb-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <h1 class="display-4 fw-bold mb-3">Find Your Dream Car</h1>
+          <p class="lead mb-4">Explore our wide selection of quality vehicles at unbeatable prices. Your perfect ride is just a click away!</p>
+        </div>
+        <div class="col-lg-6">
+          <img src="{% static 'images/car.jpg' %}" alt="Luxury Car" class="img-fluid rounded-3 shadow-lg" />
+        </div>
+      </div>
+    </div>
+  </section>
 
   <div class="row row-cols-1 row-cols-md-3 g-4 container mx-auto">
     {% for c in car %}
