@@ -3,5 +3,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path("order.", views.order),
+    path("order/<int:car_id>", views.order, name="order"),
 ]

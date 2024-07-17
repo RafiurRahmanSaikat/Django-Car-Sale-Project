@@ -8,6 +8,8 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, RedirectView, UpdateView
 
+from order.models import OrderModel
+
 from .forms import EditUserForm, RegisterForm
 
 
@@ -46,8 +48,18 @@ class UserLogout(RedirectView):
 
 
 def profile(request):
+
     if request.user.is_authenticated:
-        return render(request, "profile.html", {"user": request.user})
+        orders = OrderModel.objects.filter(user=request.user)
+
+        return render(
+            request,
+            "profile.html",
+            {
+                "user": request.user,
+                "orders": orders,
+            },
+        )
     else:
         return redirect("login")
 

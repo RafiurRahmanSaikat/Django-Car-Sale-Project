@@ -8,6 +8,7 @@ from . import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.home, name="home"),
+    path("search/<int:id>", views.search_by_brand, name="search_by_brand"),
     path("car/", include("car.urls")),
     path("brand/", include("brand.urls")),
     path("account/", include("account.urls")),
